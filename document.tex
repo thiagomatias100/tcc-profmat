@@ -1,0 +1,160 @@
+% Modelo de TCC em LaTeX - PROFMAT
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+
+\geometry{a4paper, margin=2.5cm}
+\onehalfspacing
+
+\definecolor{lightgray}{gray}{0.95}
+\lstset{
+	backgroundcolor=\color{lightgray},
+	basicstyle=\ttfamily\footnotesize,
+	breaklines=true,
+	frame=single,
+	numbers=left,
+	numberstyle=\tiny, 
+	stepnumber=1,
+	tabsize=4,
+	language=Python,
+	showstringspaces=false
+}
+
+\begin{document}
+	
+	% CAPA
+	\begin{center}
+		\Large{\textbf{UNIVERSIDADE XXXXXXX}} \\
+		\large{PROGRAMA DE MESTRADO PROFISSIONAL EM MATEMÁTICA - PROFMAT} \\
+		\vspace{3cm}
+		\LARGE{\textbf{O uso do Python no ensino de métodos numéricos discretos no Ensino Médio}} \\
+		\vspace{3cm}
+		\large{Autor: Seu Nome Aqui} \\
+		\large{Orientador: Prof. Dr. Nome do Orientador} \\
+		\vfill
+		\large{Cidade - Ano}
+	\end{center}
+	\newpage
+	
+	% RESUMO
+	\begin{abstract}
+		Este trabalho apresenta uma proposta de ensino de Matemática na Educação Básica utilizando a linguagem Python como ferramenta de apoio à exploração de métodos numéricos discretos. O projeto visa desenvolver o pensamento computacional e a compreensão de conceitos como aproximação, erro e convergência, por meio da resolução de equações e visualização gráfica de funções. A proposta está alinhada à BNCC, especialmente às habilidades EM13MAT401, EM13MAT402, EM13MAT501, EM13MAT502, EM13MAT503 e EM13MAT510, que incentivam o uso de tecnologias digitais, a análise de funções e a conversão entre representações algébricas e geométricas. \\ 
+		\textbf{Palavras-chave:} Python; Métodos numéricos; Ensino Médio; BNCC; Equações; Aproximações.
+	\end{abstract}
+	\newpage
+	
+	% INTRODUÇÃO
+	\chapter{Introdução}
+	
+	A integração entre Matemática e Computação representa uma oportunidade para tornar o ensino mais investigativo e dinâmico. A Base Nacional Comum Curricular (BNCC) destaca a importância do uso de tecnologias digitais e do pensamento computacional no desenvolvimento das competências matemáticas. Este trabalho propõe uma sequência didática utilizando Python para explorar métodos numéricos discretos aplicados à resolução de equações e funções, aproximando o estudante da experimentação científica e do raciocínio lógico.
+	
+	O problema central desta pesquisa é: \textit{como o uso de métodos numéricos discretos, implementados em Python, pode favorecer a compreensão de conceitos de funções, raízes e aproximações no Ensino Médio?}
+	
+	O objetivo geral é investigar o uso do Python como ferramenta de apoio ao ensino de Matemática, com foco nos métodos da Bisseção, Secante e Newton-Raphson. Especificamente, pretende-se:
+	\begin{itemize}
+		\item Implementar algoritmos simples de métodos numéricos discretos;
+		\item Visualizar graficamente o comportamento das funções e suas raízes;
+		\item Analisar o erro e a convergência dos métodos iterativos;
+		\item Relacionar os resultados obtidos à BNCC e às práticas pedagógicas investigativas.
+	\end{itemize}
+	
+	\newpage
+	\chapter{Fundamentação Teórica}
+	
+	\section{A BNCC e o ensino de Matemática}
+	A BNCC (2018) propõe que o estudante desenvolva competências relacionadas à resolução de problemas, à modelagem e ao uso de tecnologias digitais. As habilidades EM13MAT401 a EM13MAT510 orientam o trabalho com funções, representações gráficas e linguagens de programação.
+	
+	\section{Métodos numéricos discretos}
+	Os métodos numéricos buscam soluções aproximadas para equações que não podem ser resolvidas analiticamente. Entre os mais acessíveis para o Ensino Médio estão:
+	
+	\subsection{Método da Bisseção}
+	\begin{equation}
+		m = \frac{a + b}{2}
+	\end{equation}
+	O intervalo $[a,b]$ é atualizado conforme o sinal de $f(a)f(m)$, até que $|b-a| < \varepsilon$ ou $|f(m)| < \varepsilon$.
+	
+	\subsection{Método da Secante}
+	\begin{equation}
+		x_{n+1} = x_n - f(x_n) \cdot \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}
+	\end{equation}
+	Este método dispensa o cálculo da derivada, utilizando apenas valores anteriores da função.
+	
+	\subsection{Método de Newton-Raphson}
+	\begin{equation}
+		x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+	\end{equation}
+	Critérios de parada:
+	\begin{equation}
+		|x_{n+1} - x_n| < \varepsilon \quad \text{ou} \quad |f(x_{n+1})| < \varepsilon
+	\end{equation}
+	
+	\subsection{Erro absoluto e relativo}
+	\begin{align}
+		E_a &= |x_{aprox} - x_{real}| \\
+		E_r &= \frac{|x_{aprox} - x_{real}|}{|x_{real}|}
+	\end{align}
+	
+	\newpage
+	\chapter{Metodologia}
+	
+	A pesquisa adota uma abordagem qualitativa e exploratória, com elementos de pesquisa-ação. As atividades foram planejadas para turmas do Ensino Médio, utilizando o Google Colab como ambiente de programação.
+	
+	\section{Etapas da aplicação}
+	\begin{enumerate}
+		\item Introdução ao Python e às funções matemáticas básicas.
+		\item Plotagem de gráficos de funções e identificação de raízes.
+		\item Implementação dos métodos numéricos discretos.
+		\item Análise de erro e convergência.
+		\item Desenvolvimento de projeto final pelos alunos.
+	\end{enumerate}
+	
+	\section{Exemplo de código Python}
+	\begin{lstlisting}[language=Python, caption=Implementação do método da Bisseção]
+		import math
+		
+		def bissecao(f, a, b, tol=1e-6, max_iter=100):
+		fa, fb = f(a), f(b)
+		if fa * fb > 0:
+		raise ValueError('Intervalo inválido')
+		for k in range(max_iter):
+		m = (a + b) / 2
+		fm = f(m)
+		if abs(fm) < tol or (b - a)/2 < tol:
+		return m, k
+		if fa * fm < 0:
+		b, fb = m, fm
+		else:
+		a, fa = m, fm
+		return m, max_iter
+		
+		f = lambda x: x**2 - 3
+		raiz, iteracoes = bissecao(f, 1, 2)
+		print('Raiz aproximada:', raiz)
+	\end{lstlisting}
+	
+	\newpage
+	\chapter{Resultados Esperados}
+	
+	Espera-se que os alunos compreendam o conceito de aproximação, erro e convergência, além de desenvolverem raciocínio lógico e pensamento computacional. A metodologia visa fortalecer a relação entre teoria e prática e despertar o interesse pela modelagem matemática.
+	
+	\chapter{Considerações Finais}
+	
+	O ensino de métodos numéricos discretos com Python permite trabalhar conteúdos de funções e equações de forma aplicada e investigativa, desenvolvendo habilidades previstas na BNCC e promovendo a integração entre Matemática e Computação.
+	
+	\chapter*{Referências}
+	\begin{itemize}
+		\item BRASIL. Base Nacional Comum Curricular. MEC, 2018.
+		\item BORBA, M. C.; PENTEADO, M. G. Informática e Educação Matemática. Autêntica, 2016.
+		\item COSTA, R. S. Ensino de Métodos Numéricos com Python: uma abordagem didática. Revista de Educação Matemática, 2020.
+		\item VALENTE, J. A. O Computador na Sociedade do Conhecimento. Campinas: UNICAMP, 2018.
+		\item WING, J. M. Computational Thinking. Communications of the ACM, 2006.
+	\end{itemize}
+	
+\end{document}
